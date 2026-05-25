@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bvvtdb4k7etuf"]
+
+[ext_resource type="Script" uid="uid://hwwufjn5s5md" path="res://levels/base_pipe.gd" id="1_l1ckh"]
+
+[node name="BasePipe" type="Area2D" unique_id=1334661752]
+script = ExtResource("1_l1ckh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=818519327]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=458943220]
