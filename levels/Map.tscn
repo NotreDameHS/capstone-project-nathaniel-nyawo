@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://2i40l6ds35ry"]
 
-[ext_resource type="Texture2D" uid="uid://2gn74sephw82" path="res://levels/sky.png" id="1_gfjgm"]
+[ext_resource type="Texture2D" uid="uid://dr0fc11ucooec" path="res://assets/download.jpeg" id="1_gyrc0"]
 
 [node name="Map" type="Node2D" unique_id=953218455]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=791992564]
-scale = Vector2(0.512, 0.43199998)
-texture = ExtResource("1_gfjgm")
+scale = Vector2(5.1200004, 5.1428576)
+texture = ExtResource("1_gyrc0")

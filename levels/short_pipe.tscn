@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://de63ni4rvtbbi"]
+
+[ext_resource type="PackedScene" uid="uid://bvvtdb4k7etuf" path="res://levels/base_pipe.tscn" id="1_nmwcn"]
+[ext_resource type="Texture2D" uid="uid://c7rw5sy5ji8kg" path="res://levels/Pipe 3.png" id="2_wf2w8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k88ll"]
+size = Vector2(206, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14k32"]
+size = Vector2(206, 216)
+
+[node name="ShortPipe" unique_id=1334661752 instance=ExtResource("1_nmwcn")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=818519327]
+texture = ExtResource("2_wf2w8")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=458943220]
+position = Vector2(0, -191.5)
+shape = SubResource("RectangleShape2D_k88ll")
+
+[node name="CollisionShape2D2" parent="." index="2" unique_id=777470460]
+position = Vector2(0, 360)
+shape = SubResource("RectangleShape2D_14k32")

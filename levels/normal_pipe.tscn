@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ccfd14mny5253"]
+
+[ext_resource type="PackedScene" uid="uid://bvvtdb4k7etuf" path="res://levels/base_pipe.tscn" id="1_6g0rs"]
+[ext_resource type="Texture2D" uid="uid://y4daipoakc4m" path="res://levels/Pipe 1 .png" id="2_qyncw"]
+
+[node name="NormalPipe" unique_id=1334661752 instance=ExtResource("1_6g0rs")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=818519327]
+texture = ExtResource("2_qyncw")
