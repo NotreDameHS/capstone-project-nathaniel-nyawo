@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dfx4wbmvnsf4j"]
+
+[ext_resource type="Script" uid="uid://debfap71fnaea" path="res://pipe_spawner.gd" id="1_w58sr"]
+
+[node name="pipe spawner" type="Node2D" unique_id=1028976930]
+script = ExtResource("1_w58sr")
+mob_types = null
+
+[node name="Timer" type="Timer" parent="." unique_id=2088132363]
+autostart = true
