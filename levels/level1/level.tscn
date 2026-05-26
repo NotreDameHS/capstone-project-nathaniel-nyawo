@@ -4,6 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://bm7opvkx2fphu" path="res://entities/player/monster.tscn" id="2_1veoa"]
 [ext_resource type="PackedScene" uid="uid://2i40l6ds35ry" path="res://levels/Map.tscn" id="3_1veoa"]
 
+[sub_resource type="Curve2D" id="Curve2D_1veoa"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 766, 2, 0, 0, 0, 0, -766, 4)
+}
+point_count = 2
+
 [node name="Level" type="Node2D" unique_id=1258417119]
 
 [node name="Map" parent="." unique_id=953218455 instance=ExtResource("3_1veoa")]
@@ -15,3 +21,6 @@ zoom = Vector2(0.75, 0.75)
 
 [node name="Monster" parent="." unique_id=1080986695 instance=ExtResource("2_1veoa")]
 position = Vector2(-400, 0)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1515839580]
+curve = SubResource("Curve2D_1veoa")
