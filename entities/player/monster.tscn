@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bm7opvkx2fphu"]
 
-[ext_resource type="Texture2D" uid="uid://ib8vjbloptle" path="res://entities/player/icon.svg" id="1_7y80v"]
 [ext_resource type="Script" uid="uid://bh2ol2a6ydx2r" path="res://entities/player/monster.gd" id="1_rfkok"]
+[ext_resource type="Texture2D" uid="uid://ced3xbdcvmk52" path="res://assets/cute-doodle-monster-clipart-png.webp" id="2_ggaaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfkok"]
 size = Vector2(128, 128)
@@ -10,8 +10,9 @@ size = Vector2(128, 128)
 script = ExtResource("1_rfkok")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1309038839]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_7y80v")
+position = Vector2(-1.5258789e-05, 0.9999695)
+scale = Vector2(0.034693874, 0.03571429)
+texture = ExtResource("2_ggaaf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203078802]
 shape = SubResource("RectangleShape2D_rfkok")
