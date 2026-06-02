@@ -8,6 +8,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(1156, 650)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(1150, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(1154, 23)
+
 [node name="main" type="Node2D" unique_id=462235392]
 script = ExtResource("1_0xm2m")
 pipe_scene = ExtResource("2_h2yge")
@@ -40,6 +46,26 @@ position = Vector2(574, 333)
 
 [node name="Monster" parent="." unique_id=1080986695 instance=ExtResource("4_1bvp3")]
 position = Vector2(93, 322)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=1081488179]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1304156973]
+position = Vector2(576, 3.5)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="floor" type="Area2D" parent="." unique_id=261557862]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor" unique_id=1094460990]
+position = Vector2(579, 681.5)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=136389335]
+
+[node name="score label" type="Label" parent="CanvasLayer" unique_id=997292065]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "0"
 
 [connection signal="timeout" from="spawn_point/Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="ground" to="." method="_on_ground_body_entered"]

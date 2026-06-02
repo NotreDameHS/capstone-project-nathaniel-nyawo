@@ -2,8 +2,11 @@ extends Node2D
 @onready var spawn_point = $spawn_point
 @export var pipe_scene : PackedScene
 @onready var timer = $spawn_point/Timer
+@onready var score_label = $"CanvasLayer/score label"
+var score: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	score = 0
 	
 	pass # Replace with function body.
 

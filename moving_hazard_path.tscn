@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c74ya0dvb3k1g"]
+
+[ext_resource type="Script" uid="uid://c5kce5sdromqj" path="res://moving_hazard_path.gd" id="1_4sefy"]
+[ext_resource type="Texture2D" uid="uid://ced3xbdcvmk52" path="res://assets/cute-doodle-monster-clipart-png.webp" id="2_pwuc2"]
+
+[sub_resource type="Curve2D" id="Curve2D_secp0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 101, 119, 0, 0, 0, 0, 115, 201, 0, 0, 0, 0, 96, 337, 0, 0, 0, 0, 334, 83, 0, 0, 0, 0, 364, 437, 0, 0, 0, 0, 549, 136, 0, 0, 0, 0, 564, 529, 0, 0, 0, 0, 744, 124, 0, 0, 0, 0, 699, 569, 0, 0, 0, 0, 898, 60, 0, 0, 0, 0, 935, 618, 0, 0, 0, 0, 1076, 83, 0, 0, 0, 0, 1106, 646)
+}
+point_count = 14
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3k2di"]
+radius = 23.323807
+
+[node name="MovingHazardPath" type="Path2D" unique_id=1471960187]
+curve = SubResource("Curve2D_secp0")
+script = ExtResource("1_4sefy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=159894106]
+position = Vector2(1, 3)
+rotation = 0.8593372
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D" unique_id=72837132]
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/Area2D" unique_id=954009747]
+position = Vector2(1.2797604, 7.704687)
+scale = Vector2(0.041773103, 0.051639143)
+texture = ExtResource("2_pwuc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Area2D" unique_id=1922895231]
+position = Vector2(2.0371718, 8.357627)
+shape = SubResource("CircleShape2D_3k2di")
