@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfkok"]
 size = Vector2(128, 128)
 
-[node name="Monster" type="CharacterBody2D" unique_id=1080986695]
+[node name="Monster" type="Area2D" unique_id=325781229]
 script = ExtResource("1_rfkok")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1309038839]
