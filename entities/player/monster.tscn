@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://b2phgbcx1d0fd"]
+
+[ext_resource type="Script" uid="uid://dycphwr4neun2" path="res://entities/player/monster.gd" id="1_74f06"]
+[ext_resource type="Texture2D" uid="uid://ced3xbdcvmk52" path="res://assets/cute-doodle-monster-clipart-png.webp" id="2_ggaaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0nvmt"]
+radius = 32.649654
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggaaf"]
+bg_color = Color(0.8212233, 0.4971825, 0.48621804, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0nvmt"]
+bg_color = Color(0.9742473, 0.32572502, 0.56429344, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Monster" type="Area2D" unique_id=662491955]
+script = ExtResource("1_74f06")
+
+[node name="Timer" type="Timer" parent="." unique_id=1896873826]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=252123278]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ggaaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580624310]
+shape = SubResource("CircleShape2D_0nvmt")
+
+[node name="UI" type="Control" parent="." unique_id=143747566]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1379734053]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -52.0
+offset_right = 47.0
+offset_bottom = -40.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ggaaf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0nvmt")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="UI" unique_id=374307183]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1.0
+offset_top = -51.0
+offset_right = 40.0
+offset_bottom = -28.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2021221320]
+zoom = Vector2(0.7, 0.7)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

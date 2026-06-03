@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ckwot142qf64w"]
+
+[ext_resource type="Texture2D" uid="uid://6bvw6md2vwxe" path="res://levels/level1/Cartoon_green_texture_grass.png" id="1_utx3t"]
+
+[node name="Background" type="Sprite2D" unique_id=794059157]
+texture_repeat = 2
+scale = Vector2(0.43359998, 0.4336)
+texture = ExtResource("1_utx3t")
+region_enabled = true
+region_rect = Rect2(0, 0, 10000, 10000)
