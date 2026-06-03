@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cyuls2dcppns4"]
+
+[ext_resource type="Texture2D" uid="uid://cq5qbcl2bdf8l" path="res://entities/collectibles/speed_boost/faster-icon-png-3.png" id="1_6ow74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja26k"]
+radius = 112.00893
+
+[node name="Area2D" type="Area2D" unique_id=76029437]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=795417414]
+position = Vector2(-7.6293945e-06, 5.9999847)
+scale = Vector2(0.5097656, 0.4140625)
+texture = ExtResource("1_6ow74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1603518808]
+shape = SubResource("CircleShape2D_ja26k")
