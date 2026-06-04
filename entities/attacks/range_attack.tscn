@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dxd01fdcb82k0"]
+
+[ext_resource type="Script" uid="uid://lh7v4pa0lc5u" path="res://entities/attacks/range_attack.gd" id="1_l5i2c"]
+
+[node name="RangeAttack" type="Area2D" unique_id=1445264120]
+script = ExtResource("1_l5i2c")
+max_distance = 2500
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1847053761]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1636940183]
