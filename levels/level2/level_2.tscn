@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c8l8ih13lxn7y"]
+
+[ext_resource type="PackedScene" uid="uid://ckwot142qf64w" path="res://levels/level1/background.tscn" id="1_0fil7"]
+[ext_resource type="Script" uid="uid://cibecmjqxr4q5" path="res://levels/level1/level_1.gd" id="1_dm7n7"]
+[ext_resource type="PackedScene" uid="uid://b2phgbcx1d0fd" path="res://entities/player/monster.tscn" id="1_qqytr"]
+[ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://enemy.tscn" id="2_d3n5x"]
+
+[sub_resource type="Curve2D" id="Curve2D_dm7n7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -760, -395, 0, 0, 0, 0, -775, 381, 0, 0, 0, 0, 763, 385, 0, 0, 0, 0, 759, -388, 0, 0, 0, 0, -394, -133, 0, 0, 0, 0, 444, -126, 0, 0, 0, 0, -354, 286, 0, 0, 0, 0, 453, 271)
+}
+point_count = 8
+
+[node name="Level1" type="Node2D" unique_id=1494635314]
+script = ExtResource("1_dm7n7")
+enemy_scene = ExtResource("2_d3n5x")
+
+[node name="Background" parent="." unique_id=794059157 instance=ExtResource("1_0fil7")]
+
+[node name="Monster" parent="." unique_id=662491955 instance=ExtResource("1_qqytr")]
+
+[node name="enemyspawntimer" type="Timer" parent="." unique_id=1882324224]
+wait_time = 1.5
+autostart = true
+
+[node name="spawn path" type="Path2D" parent="." unique_id=1592570076]
+curve = SubResource("Curve2D_dm7n7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="spawn path" unique_id=1259847119]
+position = Vector2(-760, -395)
+rotation = 1.5901238
+
+[connection signal="timeout" from="enemyspawntimer" to="." method="_on_enemyspawntimer_timeout"]

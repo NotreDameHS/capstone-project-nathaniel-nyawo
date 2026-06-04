@@ -1,3 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+levels/level1/.DS_Store
+levels/.DS_Store
+levels/.DS_Store
+.DS_Store

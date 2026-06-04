@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://mgd5iwnlh17i"]
+
+[ext_resource type="Script" uid="uid://bj1mbmwhwy3j1" path="res://entities/collectibles/Heart buff/area_2d.gd" id="1_bmk6h"]
+[ext_resource type="Texture2D" uid="uid://cq5qbcl2bdf8l" path="res://entities/collectibles/speed_boost/faster-icon-png-3.png" id="2_bcxxa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja26k"]
+radius = 49.162994
+
+[node name="speed_boost" type="Area2D" unique_id=1163334301]
+script = ExtResource("1_bmk6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1238695966]
+position = Vector2(-1, 4)
+scale = Vector2(0.22421877, 0.17313987)
+texture = ExtResource("2_bcxxa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2010313488]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_ja26k")

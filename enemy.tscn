@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://2oqfqxx5b61g"]
+
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="1_4gyqm"]
+[ext_resource type="Texture2D" uid="uid://daq1dat6i0ykp" path="res://entities/collectibles/green-monster-icon-0.png" id="2_qi2p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
+radius = 56.32051
+
+[node name="Enemy" type="CharacterBody2D" unique_id=154444448]
+script = ExtResource("1_4gyqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906339483]
+position = Vector2(-4, -0.99998474)
+scale = Vector2(0.19921872, 0.15429689)
+texture = ExtResource("2_qi2p4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179075041]
+shape = SubResource("CircleShape2D_iifgy")
