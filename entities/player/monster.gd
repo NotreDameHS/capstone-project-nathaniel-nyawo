@@ -3,25 +3,42 @@ extends Area2D
 #---Main Variables-------------------------------------------------------------------------------------------------
 var velocity := Vector2(0, 0)
 var normal_speed := 600.0
-var boost_speed := 1500.0
 var max_speed := normal_speed
 var steering_factor := 10.0
 
 @export var max_health := 100
 var health = max_health
 @onready var health_bar = $UI/HealthBar
-@onready var ui_node = $UI
+
+###-Mob Detection and Projectiles----------------------------------------------------------------------------------
+@export var mob_detection_range:= 100.0
+@onready var detection_range := $MobDetection/CollisionShape2D
+@onready var detection_area = $MobDetection
+@export var attack_rate := 1.5
+@onready var timer = $Timer
+@export var projectile_scene: PackedScene
+@onready var spawn_point = $Marker2D
+
+#---Ready Function-------------------------------------------------------------------------------------------------
+func _ready() -> void:
+	detection_range.shape = detection_range.shape.duplicate()
+	detection_range.shape.radius = mob_detection_range
+	
+	timer.wait_time = 1.0 / attack_rate
+	timer.start()
+
+#---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
+func _physics_process(_delta) -> void:
+	var mobs_in_range : Array = detection_area.get_overlapping_areas()
+	if not mobs_in_range.is_empty():
+		var target: Area2D = mobs_in_range[0]
+		look_at(target.global_position)
 
 #---Movement Function----------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	var direction := Vector2(0, 0)
 	direction.x = Input.get_axis("move_left", "move_right")
 	direction.y = Input.get_axis("move_up", "move_down")
-
-#---Boost----------------------------------------------------------------------------------------------------------
-	if Input.is_action_just_pressed("boost"):
-		max_speed = boost_speed
-		get_node("Timer").start()
 
 #---Direction------------------------------------------------------------------------------------------------------
 	if direction.length() > 1:
@@ -35,6 +52,19 @@ func _process(delta: float) -> void:
 	
 	velocity += steering_vector * steering_factor * delta
 	position += velocity * delta
+
+#---Shooting Projectiles-------------------------------------------------------------------------------------------
+	var mobs_in_range : Array = detection_area.get_overlapping_areas()
+	
+	if mobs_in_range.is_empty():
+		return
+	
+	if Input.is_action_just_pressed("acid_attack"):
+		var projectile = projectile_scene.instantiate()
+
+		get_tree().current_scene.add_child(projectile)
+
+		projectile.global_transform = spawn_point.global_transform
 
 #---Timer Node Function--------------------------------------------------------------------------------------------
 func _on_timer_timeout() -> void:
