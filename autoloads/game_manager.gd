@@ -1,6 +1,6 @@
 extends Node
 signal score_changed(new_score: int)
-signal game_over_triggered
+
 
 var score: int = 0
 
@@ -13,7 +13,9 @@ func reser_game() -> void:
 	get_tree().reload_current_scene()
 	
 func trigger_game_over() -> void:
-	game_over_triggered.emit()
+	score = 0
+	print("GAME OVER: RESTARTING STAGE")
+	get_tree().reload_current_scene()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
