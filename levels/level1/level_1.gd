@@ -16,10 +16,11 @@ func _process(delta: float) -> void:
 func _on_enemyspawntimer_timeout() -> void:
 	if not enemy_scene:
 		return
+	var new_path_follower = PathFollow2D.new()
+	new_path_follower.loop = false
+	$"spawn path".add_child(new_path_follower)
+	new_path_follower.progress_ratio = randf()
 	var new_enemy = enemy_scene.instantiate()
-	add_child(new_enemy)
-	$"spawn path/PathFollow2D".progress_ratio = randf()
-	new_enemy.global_position = $"spawn path/PathFollow2D".global_position
-
+	new_path_follower.add_child(new_enemy)
 func _on_game_over() -> void:
 	spawn_timer.stop()
