@@ -1,18 +1,49 @@
 [gd_scene format=3 uid="uid://2oqfqxx5b61g"]
 
-[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://entities/enemy/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://daq1dat6i0ykp" path="res://entities/enemy/green-monster-icon-0.png" id="2_qi2p4"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
-radius = 56.32051
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im2q6"]
+size = Vector2(60, 66)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=154444448 groups=["enemy"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fvr7"]
+bg_color = Color(0.73333335, 0.32156864, 0.654902, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dt443"]
+bg_color = Color(0.93333334, 0.33333334, 0.39607844, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1408290846 groups=["enemy"]]
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906339483]
-position = Vector2(-4, -0.99998474)
 scale = Vector2(0.19921872, 0.15429689)
 texture = ExtResource("2_qi2p4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179075041]
-shape = SubResource("CircleShape2D_iifgy")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_im2q6")
+
+[node name="UI" type="Control" parent="." unique_id=1371921039]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1921419005]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 33.0
+offset_bottom = -42.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3fvr7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dt443")
+value = 50.0
+show_percentage = false
