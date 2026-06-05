@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://daq1dat6i0ykp"
-path="res://.godot/imported/green-monster-icon-0.png-74922e33d90bf88ab11e36f22c389bb5.ctex"
+path="res://.godot/imported/green-monster-icon-0.png-5b981a2abf36d84f68e1e3f6834fe7f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/collectibles/green-monster-icon-0.png"
-dest_files=["res://.godot/imported/green-monster-icon-0.png-74922e33d90bf88ab11e36f22c389bb5.ctex"]
+source_file="res://entities/enemy/green-monster-icon-0.png"
+dest_files=["res://.godot/imported/green-monster-icon-0.png-5b981a2abf36d84f68e1e3f6834fe7f4.ctex"]
 
 [params]
 
