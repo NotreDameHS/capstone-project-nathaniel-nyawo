@@ -23,6 +23,10 @@ GameManager="*uid://dcxy0vxwon3oa"
 
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+enemy=""
+
 [input]
 
 move_left={

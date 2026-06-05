@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://e72sta8e0kit" path="res://entities/player/monsterer.png" id="2_ggaaf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggaaf"]
-radius = 99.0
-height = 326.0
+radius = 57.0
+height = 174.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggaaf"]
 radius = 1572.827
@@ -33,8 +33,9 @@ projectile_scene = ExtResource("2_0nvmt")
 [node name="Timer" type="Timer" parent="." unique_id=1896873826]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=252123278]
-position = Vector2(19, 23)
+position = Vector2(8, 6)
 rotation = 1.5707964
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ggaaf")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=1580624310]
