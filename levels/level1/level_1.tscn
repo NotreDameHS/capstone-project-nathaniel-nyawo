@@ -8,4 +8,3 @@
 [node name="Background" parent="." unique_id=794059157 instance=ExtResource("1_0fil7")]
 
 [node name="Monster" parent="." unique_id=662491955 instance=ExtResource("1_qqytr")]
-scale = Vector2(0.43359998, 0.4336)
