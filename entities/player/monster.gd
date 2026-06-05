@@ -1,9 +1,9 @@
-extends Area2D
+class_name Enemy extends Area2D
 
 #---Main Variables-------------------------------------------------------------------------------------------------
 var velocity := Vector2(0, 0)
 var normal_speed := 600.0
-var max_speed := normal_speed
+@export var max_speed := normal_speed
 var steering_factor := 10.0
 
 @export var max_health := 100
@@ -11,7 +11,7 @@ var health = max_health
 @onready var health_bar = $UI/HealthBar
 
 ###-Mob Detection and Projectiles----------------------------------------------------------------------------------
-@export var mob_detection_range:= 100.0
+@export var enemy_detection_range:= 100.0
 @onready var detection_range := $MobDetection/CollisionShape2D
 @onready var detection_area = $MobDetection
 @export var attack_rate := 1.5
@@ -22,16 +22,16 @@ var health = max_health
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _ready() -> void:
 	detection_range.shape = detection_range.shape.duplicate()
-	detection_range.shape.radius = mob_detection_range
+	detection_range.shape.radius = enemy_detection_range
 	
 	timer.wait_time = 1.0 / attack_rate
 	timer.start()
 
 #---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
 func _physics_process(_delta) -> void:
-	var mobs_in_range : Array = detection_area.get_overlapping_areas()
-	if not mobs_in_range.is_empty():
-		var target: Area2D = mobs_in_range[0]
+	var enemy_in_range : Array = detection_area.get_overlapping_areas()
+	if not enemy_in_range.is_empty():
+		var target: Area2D = enemy_in_range[0]
 		look_at(target.global_position)
 
 #---Movement Function----------------------------------------------------------------------------------------------
@@ -54,9 +54,9 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 
 #---Shooting Projectiles-------------------------------------------------------------------------------------------
-	var mobs_in_range : Array = detection_area.get_overlapping_areas()
+	var enemy_in_range : Array = detection_area.get_overlapping_areas()
 	
-	if mobs_in_range.is_empty():
+	if enemy_in_range.is_empty():
 		return
 	
 	if Input.is_action_just_pressed("acid_attack"):

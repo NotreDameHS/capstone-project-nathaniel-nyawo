@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bd2n01fu2ewhw" path="res://entities/attacks/acid shot.png" id="2_iiiwi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6c3w"]
-radius = 79.05694
+radius = 38.013157
 
 [node name="AcidBall" unique_id=1445264120 instance=ExtResource("1_d7c0o")]
+max_distance = 1000
+speed = 900
 
 [node name="Sprite2D" parent="." index="0" unique_id=1847053761]
-position = Vector2(-24, 0)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-13, 1)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_iiiwi")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1636940183]
