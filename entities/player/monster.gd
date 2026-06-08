@@ -29,6 +29,7 @@ func _ready() -> void:
 
 #---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
 func _physics_process(_delta) -> void:
+	var enemies = get_tree().get_nodes_in_group("mobs")
 	var enemy_in_range : Array = detection_area.get_overlapping_areas()
 	if not enemy_in_range.is_empty():
 		var target: Area2D = enemy_in_range[0]
