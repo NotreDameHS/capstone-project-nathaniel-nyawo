@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://e72sta8e0kit" path="res://entities/player/monsterer.png" id="2_ggaaf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggaaf"]
-radius = 57.0
-height = 174.0
+radius = 60.0
+height = 176.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggaaf"]
 radius = 1572.827
@@ -25,24 +25,26 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Monster" type="Area2D" unique_id=662491955]
+[node name="Monster" type="Node2D" unique_id=19266923]
 script = ExtResource("1_74f06")
-mob_detection_range = 500.0
 projectile_scene = ExtResource("2_0nvmt")
 
 [node name="Timer" type="Timer" parent="." unique_id=1896873826]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=252123278]
-position = Vector2(8, 6)
-rotation = 1.5707964
+position = Vector2(2, -3)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ggaaf")
 
-[node name="HitBox" type="CollisionShape2D" parent="." unique_id=1580624310]
-rotation = 1.5707964
+[node name="HitBoxArea" type="Area2D" parent="." unique_id=1113182558]
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBoxArea" unique_id=1580624310]
 shape = SubResource("CapsuleShape2D_ggaaf")
 
 [node name="MobDetection" type="Area2D" parent="." unique_id=539937884]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobDetection" unique_id=746619959]
 shape = SubResource("CircleShape2D_ggaaf")
@@ -76,7 +78,7 @@ offset_bottom = -27.0
 zoom = Vector2(0.5, 0.5)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1217002726]
-position = Vector2(0, 99)
+position = Vector2(60, 0)
 
 [node name="Timer2" type="Timer" parent="." unique_id=395046104]
 

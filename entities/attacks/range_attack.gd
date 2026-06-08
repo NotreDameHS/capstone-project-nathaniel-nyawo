@@ -17,6 +17,13 @@ func _explode() -> void:
 	spawn_poof(global_position)
 	queue_free()
 
+#---Mob Detect Function------------------------------------------------
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		area._take_damage(damage)
+		print(area, " is taking ", damage, " damage!")
+		_explode()
+
 #---Explosion Animation------------------------------------------------
 func spawn_poof(projectile_position: Vector2):
 	var particles = CPUParticles2D.new()

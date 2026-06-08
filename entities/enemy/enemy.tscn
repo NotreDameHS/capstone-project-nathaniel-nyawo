@@ -20,7 +20,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1408290846 groups=["enemy"]]
+[node name="Enemy" type="Area2D" unique_id=217647219 groups=["enemy"]]
+collision_layer = 3
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906339483]
@@ -45,5 +46,6 @@ offset_right = 33.0
 offset_bottom = -42.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3fvr7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_dt443")
-value = 50.0
+max_value = 200.0
+value = 200.0
 show_percentage = false
