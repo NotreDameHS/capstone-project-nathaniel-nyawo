@@ -40,15 +40,14 @@ func spawn_collectible_drop() -> void:
 func _physics_process(delta: float) -> void:
 	var player = get_tree().current_scene.get_node_or_null("Monster")
 	
-	health_bar.rotation = global_rotation
-	ui_node.rotation = global_rotation
+	ui_node.rotation = -global_rotation
 
 	if player:
 		var direction = global_position.direction_to(player.global_position)
 		
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Monster":
-		if body.has_method("take_damage"):
-			body.take_damage(damage_amount)
+func _on_area_entered(area: Node2D) -> void:
+	if area.name == "Monster":
+		if area.has_method("take_damage"):
+			area.take_damage(damage_amount)
 		queue_free()

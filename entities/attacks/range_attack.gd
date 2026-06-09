@@ -19,7 +19,7 @@ func _explode() -> void:
 
 #---Mob Detect Function------------------------------------------------
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
+	if area is Enemy:
 		area._take_damage(damage)
 		print(area, " is taking ", damage, " damage!")
 		_explode()

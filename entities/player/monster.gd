@@ -9,9 +9,10 @@ var steering_factor := 10.0
 @export var max_health := 100
 var health = max_health
 @onready var health_bar = $UI/HealthBar
+@onready var ui_node = $UI
 
 ###-Mob Detection and Projectiles----------------------------------------------------------------------------------
-@export var enemy_detection_range:= 1000.0
+@export var enemy_detection_range:= 500.0
 @onready var detection_range := $MobDetection/CollisionShape2D
 @onready var detection_area = $MobDetection
 @export var attack_rate := 1.5
@@ -30,20 +31,24 @@ func _ready() -> void:
 #---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
 func _physics_process(_delta) -> void:
 	var enemy_in_range : Array = detection_area.get_overlapping_areas()
+
 	if not enemy_in_range.is_empty():
 		var target: Node2D = enemy_in_range[0]
-		
-		print(target)
 		look_at(target.global_position)
+
+#---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
+
 
 #---Movement Function----------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	var direction := Vector2(0, 0)
 	direction.x = Input.get_axis("move_left", "move_right")
 	direction.y = Input.get_axis("move_up", "move_down")
-
-#---Direction------------------------------------------------------------------------------------------------------
-
+	
+	if direction.length() > 1:
+		direction = direction.normalized()
+	
+	ui_node.rotation = -global_rotation
 
 #---Smooth Movement------------------------------------------------------------------------------------------------
 	var desired_velocity := direction * max_speed
