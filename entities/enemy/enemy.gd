@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 
 #---Area Entered Damage----------------------------------------------------------------------
 func _on_area_entered(area: Node2D) -> void:
-	if area is Monster:
-		if area.has_method("_take_damage"):
-			area._take_damage(damage_amount)
-		queue_free()
+	if area.get_parent() is Monster:
+		if area.get_parent().has_method("_take_damage"):
+			area.get_parent()._take_damage(damage_amount)
+		

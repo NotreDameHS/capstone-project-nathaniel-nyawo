@@ -14,7 +14,7 @@ var health = max_health
 @onready var ui_node = $HitBoxArea/UI
 
 ###-Mob Detection and Projectiles----------------------------------------------------------------------------------
-@export var enemy_detection_range:= 500.0
+@export var enemy_detection_range:= 1000.0
 @onready var detection_range := $MobDetection/CollisionShape2D
 @onready var detection_area = $MobDetection
 @export var attack_rate := 1.5
@@ -99,11 +99,16 @@ func spawn_collectible_drop() -> void:
 
 #---Damage Function------------------------------------------------------------------------------------------------
 func _take_damage(amount: float) -> void:
-	health -= amount
-	if health <= 0.0:
-		health = 0.0
-	if health_bar:
-		health_bar.value = health
+	if cooldown.is_stopped():
+		print("You're taking", amount, " damage!")
+		health -= amount
+		if health <= 0.0:
+			health = 0.0
+		if health_bar:
+			health_bar.value = health
+	else:
+		return
+	cooldown.start()
 
 #---Area Entered Function------------------------------------------------------------------------------------------
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
