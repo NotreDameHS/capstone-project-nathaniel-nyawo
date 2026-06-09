@@ -7,6 +7,7 @@
 radius = 78.91768
 
 [node name="Heart" type="Area2D" unique_id=1163334301]
+collision_layer = 2
 script = ExtResource("1_4fcxg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1238695966]
@@ -17,3 +18,5 @@ texture = ExtResource("2_fvwdo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2010313488]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_ja26k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

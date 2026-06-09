@@ -83,3 +83,4 @@ position = Vector2(60, 0)
 [node name="Timer2" type="Timer" parent="." unique_id=395046104]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_area_entered"]

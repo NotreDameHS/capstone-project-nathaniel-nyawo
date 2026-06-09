@@ -5,6 +5,7 @@ var velocity := Vector2(0, 0)
 var normal_speed := 600.0
 @export var max_speed := normal_speed
 var steering_factor := 10.0
+var health_count := 0
 
 @export var max_health := 100
 var health = max_health
@@ -77,3 +78,28 @@ func set_health(new_health: int) -> void:
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _on_ready() -> void:
 	set_health(health)
+
+func set_health_count(new_health_count: int) -> void:
+	health_count = new_health_count
+	get_node("$UI/Healthcount").text = "x" + str(health_count)
+#func _on_area_entered(area: Node2D) -> void:
+	#if area.is_in_group("health"):
+		#set_health_count(health_count + 1)
+	#elif area.is_in_group("healing_item"):
+		#set_health(health + 10)
+		
+		
+func spawn_collectible_drop() -> void:
+	var drop_scene = load("://entities/collectibles/speed_boost/speed.tscn")
+	if drop_scene:
+		var drop = drop_scene.instantiate()
+		get_parent().call_deferred("add_child", drop)
+		drop.global_postion = global_position
+
+
+func _on_hit_box_area_area_entered(area: Area2D) -> void:
+	if area.is_in_group("health"):
+		set_health_count(health_count + 1)
+	elif area.is_in_group("healing_item"):
+		set_health(health + 10)
+	pass # Replace with function body.

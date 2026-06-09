@@ -11,6 +11,12 @@ var is_chasing: bool = false
 @onready var health_bar = $UI/HealthBar
 @onready var ui_node = $UI
 
+func set_health(new_health: int) -> void:
+	health = new_health
+	get_node("UI/HealthBar").value = health
+
+
+
 #---On Ready---------------------------------------------------------------------------------
 func _on_ready() -> void:
 	health = max_health
@@ -24,18 +30,12 @@ func _take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0.0:
 		GameManager.add_score(15)
-		spawn_collectible_drop()
 		health = 0.0
 		queue_free()
 	if health_bar:
 		health_bar.value = health
 
-func spawn_collectible_drop() -> void:
-	var drop_scene = load("://entities/collectibles/speed_boost/speed.tscn")
-	if drop_scene:
-		var drop = drop_scene.instantiate()
-		get_parent().call_deferred("add_child", drop)
-		drop.global_postion = global_position
+
 
 func _physics_process(delta: float) -> void:
 	var player = get_tree().current_scene.get_node_or_null("Monster")
