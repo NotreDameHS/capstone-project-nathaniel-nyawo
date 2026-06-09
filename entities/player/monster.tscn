@@ -31,6 +31,10 @@ projectile_scene = ExtResource("2_0nvmt")
 
 [node name="Timer" type="Timer" parent="." unique_id=1896873826]
 
+[node name="CoolDown" type="Timer" parent="." unique_id=395046104]
+wait_time = 0.5
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=252123278]
 position = Vector2(2, -3)
 scale = Vector2(0.5, 0.5)
@@ -79,8 +83,6 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1217002726]
 position = Vector2(60, 0)
-
-[node name="Timer2" type="Timer" parent="." unique_id=395046104]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="HitBoxArea" to="." method="_on_hit_box_area_area_entered"]

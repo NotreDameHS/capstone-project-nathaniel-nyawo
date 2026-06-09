@@ -6,6 +6,7 @@ var normal_speed := 600.0
 @export var max_speed := normal_speed
 var steering_factor := 10.0
 var health_count := 0
+@onready var cooldown: Timer = $CoolDown
 
 @export var max_health := 100
 var health = max_health
@@ -37,9 +38,6 @@ func _physics_process(_delta) -> void:
 		var target: Node2D = enemy_in_range[0]
 		look_at(target.global_position)
 
-#---Mob Aim/Physics Process Function-------------------------------------------------------------------------------
-
-
 #---Movement Function----------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	var direction := Vector2(0, 0)
@@ -60,11 +58,20 @@ func _process(delta: float) -> void:
 
 #---Shooting Projectiles-------------------------------------------------------------------------------------------
 	if Input.is_action_just_pressed("acid_attack"):
-		var projectile = projectile_scene.instantiate()
+		if cooldown.is_stopped():
+			acid_shot()
+		else:
+			return
 
-		get_tree().current_scene.add_child(projectile)
+#---Shooting Function----------------------------------------------------------------------------------------------
+func acid_shot():
+	var projectile = projectile_scene.instantiate()
 
-		projectile.global_transform = spawn_point.global_transform
+	get_tree().current_scene.add_child(projectile)
+
+	projectile.global_transform = spawn_point.global_transform
+	
+	cooldown.start()
 
 #---Timer Node Function--------------------------------------------------------------------------------------------
 func _on_timer_timeout() -> void:
