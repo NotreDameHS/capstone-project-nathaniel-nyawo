@@ -8,9 +8,6 @@
 radius = 60.0
 height = 176.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ggaaf"]
-radius = 1572.827
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggaaf"]
 bg_color = Color(0.8212233, 0.4971825, 0.48621804, 1)
 corner_radius_top_left = 8
@@ -24,6 +21,9 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggaaf"]
+radius = 1572.827
 
 [node name="Monster" type="Node2D" unique_id=19266923]
 script = ExtResource("1_74f06")
@@ -45,21 +45,13 @@ texture = ExtResource("2_ggaaf")
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea" unique_id=1580624310]
 shape = SubResource("CapsuleShape2D_ggaaf")
 
-[node name="MobDetection" type="Area2D" parent="." unique_id=539937884]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MobDetection" unique_id=746619959]
-shape = SubResource("CircleShape2D_ggaaf")
-
-[node name="UI" type="Control" parent="." unique_id=143747566]
+[node name="UI" type="Control" parent="HitBoxArea" unique_id=143747566]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HealthBar" type="ProgressBar" parent="UI" unique_id=1379734053]
+[node name="HealthBar" type="ProgressBar" parent="HitBoxArea/UI" unique_id=1379734053]
 layout_mode = 0
 offset_left = -128.0
 offset_top = -182.0
@@ -70,13 +62,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0nvmt")
 value = 100.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="UI" unique_id=374307183]
+[node name="Label" type="Label" parent="HitBoxArea/UI" unique_id=374307183]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 2.0
 offset_top = -50.0
 offset_right = 43.0
 offset_bottom = -27.0
+
+[node name="MobDetection" type="Area2D" parent="." unique_id=539937884]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MobDetection" unique_id=746619959]
+shape = SubResource("CircleShape2D_ggaaf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2021221320]
 zoom = Vector2(0.5, 0.5)

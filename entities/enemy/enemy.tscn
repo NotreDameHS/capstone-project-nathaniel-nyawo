@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://entities/enemy/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://daq1dat6i0ykp" path="res://entities/enemy/green-monster-icon-0.png" id="2_qi2p4"]
-[ext_resource type="Texture2D" uid="uid://dcuylfo76gb7e" path="res://entities/collectibles/Heart buff/pngtree-red-pixelated-heart-icon-in-8-bit-style-on-transparent-background-png-image_18231914.webp" id="3_3fvr7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_im2q6"]
-radius = 112.44554
+radius = 35.69314
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fvr7"]
 bg_color = Color(0.73333335, 0.32156864, 0.654902, 1)
@@ -50,19 +49,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dt443")
 max_value = 200.0
 value = 200.0
 show_percentage = false
-
-[node name="Sprite2D" type="Sprite2D" parent="UI" unique_id=1842961720]
-position = Vector2(-25, -66)
-scale = Vector2(0.0820312, 0.09722219)
-texture = ExtResource("3_3fvr7")
-
-[node name="Healthcount" type="Label" parent="UI" unique_id=840979182]
-layout_mode = 0
-offset_left = -9.0
-offset_top = -83.0
-offset_right = 31.0
-offset_bottom = -48.0
-theme_override_font_sizes/font_size = 25
-text = "x0"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,4 +1,4 @@
-extends Node2D
+class_name Monster extends Node2D
 
 #---Main Variables-------------------------------------------------------------------------------------------------
 var velocity := Vector2(0, 0)
@@ -10,8 +10,8 @@ var health_count := 0
 
 @export var max_health := 100
 var health = max_health
-@onready var health_bar = $UI/HealthBar
-@onready var ui_node = $UI
+@onready var health_bar = $HitBoxArea/UI/HealthBar
+@onready var ui_node = $HitBoxArea/UI
 
 ###-Mob Detection and Projectiles----------------------------------------------------------------------------------
 @export var enemy_detection_range:= 500.0
@@ -89,13 +89,7 @@ func _on_ready() -> void:
 func set_health_count(new_health_count: int) -> void:
 	health_count = new_health_count
 	get_node("$UI/Healthcount").text = "x" + str(health_count)
-#func _on_area_entered(area: Node2D) -> void:
-	#if area.is_in_group("health"):
-		#set_health_count(health_count + 1)
-	#elif area.is_in_group("healing_item"):
-		#set_health(health + 10)
-		
-		
+
 func spawn_collectible_drop() -> void:
 	var drop_scene = load("://entities/collectibles/speed_boost/speed.tscn")
 	if drop_scene:
@@ -103,10 +97,17 @@ func spawn_collectible_drop() -> void:
 		get_parent().call_deferred("add_child", drop)
 		drop.global_postion = global_position
 
+#---Damage Function------------------------------------------------------------------------------------------------
+func _take_damage(amount: float) -> void:
+	health -= amount
+	if health <= 0.0:
+		health = 0.0
+	if health_bar:
+		health_bar.value = health
 
+#---Area Entered Function------------------------------------------------------------------------------------------
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("health"):
 		set_health_count(health_count + 1)
 	elif area.is_in_group("healing_item"):
 		set_health(health + 10)
-	pass # Replace with function body.

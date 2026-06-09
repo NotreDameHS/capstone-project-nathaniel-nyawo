@@ -3,21 +3,18 @@ class_name Enemy extends Area2D
 @export var damage_amount: float = 10.0
 var is_chasing: bool = false
 
-
-
 ###-Health Variables-------------------------------------------------------------------------
-@export var max_health := 200.0
+@export var max_health := 100.0
 @export var health = max_health
 @onready var health_bar = $UI/HealthBar
 @onready var ui_node = $UI
 
+#---Health Function--------------------------------------------------------------------------
 func set_health(new_health: int) -> void:
 	health = new_health
 	get_node("UI/HealthBar").value = health
 
-
-
-#---On Ready---------------------------------------------------------------------------------
+#---On Ready Function------------------------------------------------------------------------
 func _on_ready() -> void:
 	health = max_health
 	if health_bar:
@@ -25,7 +22,7 @@ func _on_ready() -> void:
 		health_bar.max_value = max_health
 		health_bar.value = health
 	
-#---Taking Damage----------------------------------------------------------------------------
+#---Taking Damage Function-------------------------------------------------------------------
 func _take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0.0:
@@ -35,8 +32,7 @@ func _take_damage(amount: float) -> void:
 	if health_bar:
 		health_bar.value = health
 
-
-
+#---Physics Process Damage-------------------------------------------------------------------
 func _physics_process(delta: float) -> void:
 	var player = get_tree().current_scene.get_node_or_null("Monster")
 	
@@ -44,10 +40,10 @@ func _physics_process(delta: float) -> void:
 
 	if player:
 		var direction = global_position.direction_to(player.global_position)
-		
 
+#---Area Entered Damage----------------------------------------------------------------------
 func _on_area_entered(area: Node2D) -> void:
-	if area.name == "Monster":
-		if area.has_method("take_damage"):
-			area.take_damage(damage_amount)
+	if area is Monster:
+		if area.has_method("_take_damage"):
+			area._take_damage(damage_amount)
 		queue_free()
