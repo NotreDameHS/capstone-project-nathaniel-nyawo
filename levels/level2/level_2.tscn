@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cibecmjqxr4q5" path="res://levels/level1/level_1.gd" id="1_dm7n7"]
 [ext_resource type="PackedScene" uid="uid://b2phgbcx1d0fd" path="res://entities/player/monster.tscn" id="1_qqytr"]
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://entities/enemy/enemy.tscn" id="2_d3n5x"]
+[ext_resource type="PackedScene" uid="uid://cjpuaf2fnrif6" path="res://random_item.tscn" id="5_45oce"]
 
 [sub_resource type="Curve2D" id="Curve2D_dm7n7"]
 _data = {
@@ -29,5 +30,7 @@ curve = SubResource("Curve2D_dm7n7")
 [node name="PathFollow2D" type="PathFollow2D" parent="spawn path" unique_id=1259847119]
 position = Vector2(-760, -395)
 rotation = 1.5901238
+
+[node name="RandomItem" parent="." unique_id=838983647 instance=ExtResource("5_45oce")]
 
 [connection signal="timeout" from="enemyspawntimer" to="." method="_on_enemyspawntimer_timeout"]

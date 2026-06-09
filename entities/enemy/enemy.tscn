@@ -21,7 +21,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Enemy" type="Area2D" unique_id=1748965047 groups=["enemy"]]
-collision_layer = 3
+collision_layer = 2
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1906339483]

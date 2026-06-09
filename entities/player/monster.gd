@@ -88,6 +88,7 @@ func _on_ready() -> void:
 
 func set_health_count(new_health_count: int) -> void:
 	health_count = new_health_count
+<<<<<<< Updated upstream
 	get_node("$UI/Healthcount").text = "x" + str(health_count)
 
 func spawn_collectible_drop() -> void:
@@ -96,6 +97,17 @@ func spawn_collectible_drop() -> void:
 		var drop = drop_scene.instantiate()
 		get_parent().call_deferred("add_child", drop)
 		drop.global_postion = global_position
+=======
+	get_node("UI/HealthCount").text = "x" + str(health_count)
+#func _on_area_entered(area: Node2D) -> void:
+	#if area.is_in_group("health"):
+		#set_health_count(health_count + 1)
+	#elif area.is_in_group("healing_item"):
+		#set_health(health + 10)
+		
+		
+
+>>>>>>> Stashed changes
 
 #---Damage Function------------------------------------------------------------------------------------------------
 func _take_damage(amount: float) -> void:
@@ -112,7 +124,14 @@ func _take_damage(amount: float) -> void:
 
 #---Area Entered Function------------------------------------------------------------------------------------------
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
-	if area.is_in_group("health"):
+	print("area")
+	#if area.is_in_group("speed_boost"):
+		#set_health_count(health_count + 1)
+	if area.is_in_group("healing_item"):
 		set_health_count(health_count + 1)
-	elif area.is_in_group("healing_item"):
 		set_health(health + 10)
+<<<<<<< Updated upstream
+=======
+		print("area1")
+	pass # Replace with function body.
+>>>>>>> Stashed changes

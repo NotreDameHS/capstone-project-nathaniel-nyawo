@@ -4,15 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dcuylfo76gb7e" path="res://entities/collectibles/Heart buff/pngtree-red-pixelated-heart-icon-in-8-bit-style-on-transparent-background-png-image_18231914.webp" id="2_fvwdo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ja26k"]
-radius = 78.91768
+radius = 39.012817
 
-[node name="Heart" type="Area2D" unique_id=1163334301]
-collision_layer = 2
+[node name="Heart" type="Area2D" unique_id=1163334301 groups=["healing_item"]]
+collision_layer = 4
 script = ExtResource("1_4fcxg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1238695966]
-position = Vector2(-2.3841858e-07, 0)
-scale = Vector2(0.47187504, 0.54940474)
+position = Vector2(0.9999924, 1)
+scale = Vector2(0.22968753, 0.24414681)
 texture = ExtResource("2_fvwdo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2010313488]

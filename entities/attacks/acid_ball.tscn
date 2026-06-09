@@ -7,6 +7,7 @@
 radius = 38.013157
 
 [node name="AcidBall" unique_id=1445264120 instance=ExtResource("1_d7c0o")]
+collision_mask = 2
 max_distance = 1000
 speed = 900
 
