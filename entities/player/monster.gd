@@ -108,6 +108,7 @@ func _take_damage(amount: float) -> void:
 		health -= amount
 		if health <= 0.0:
 			health = 0.0
+			GameManager.show_end_screen("Game Over!")
 		if health_bar:
 			health_bar.value = health
 	else:

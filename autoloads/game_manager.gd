@@ -1,4 +1,14 @@
 extends Node
+###-Game over / Victory----------------------------------------------------------------------
+const GAME_END_SCREEN = preload("res://ui/game_end_screen.tscn")
+
+#---End Screen Function----------------------------------------------------------------------
+func show_end_screen(message: String) -> void:
+	var screen = GAME_END_SCREEN.instantiate()
+	get_tree().current_scene.add_child(screen)
+	screen.set_title(message)
+
+###-Score and Waves--------------------------------------------------------------------------
 signal score_changed(new_score: int)
 signal wave_changed(new_wave: int)
 
