@@ -1,6 +1,6 @@
 class_name Enemy extends Area2D
 @export var base_speed: float = 90.0 
-@export var damage_amount: float = 10.0
+@export var damage_amount: float = 100.0
 var is_chasing: bool = false
 var speed: float
 ###-Health Variables-------------------------------------------------------------------------
@@ -41,6 +41,7 @@ func _physics_process(delta: float) -> void:
 
 	if player:
 		var direction = global_position.direction_to(player.global_position)
+		position += direction * base_speed * delta
 
 #---Area Entered Damage----------------------------------------------------------------------
 func _on_area_entered(area: Node2D) -> void:

@@ -8,7 +8,7 @@ var steering_factor := 10.0
 var health_count := 0
 @onready var cooldown: Timer = $CoolDown
 
-@export var max_health := 100
+@export var max_health := 250
 var health = max_health
 @onready var health_bar = $HitBoxArea/UI/HealthBar
 @onready var ui_node = $HitBoxArea/UI
@@ -108,8 +108,13 @@ func _take_damage(amount: float) -> void:
 		print("You're taking", amount, " damage!")
 		health -= amount
 		if health <= 0.0:
-			health = 0.0
-			GameManager.show_end_screen("Game Over!")
+			if health_count > 0:
+				set_health_count(health_count - 1)
+				health = max_health
+				print("lost a life! Remaining Lives: ", health_count)
+			else:
+				health = 0.0
+				GameManager.show_end_screen("Game Over!")
 		if health_bar:
 			health_bar.value = health
 	else:
@@ -123,7 +128,8 @@ func _on_hit_box_area_area_entered(area: Area2D) -> void:
 		#set_health_count(health_count + 1)
 	if area.is_in_group("healing_item"):
 		print("In heal")
-		set_health_count(health_count + 1)
+		if health_count < 4:
+			set_health_count(health_count + 1)
 		set_health(health + 10)
 
 		print("area1")
