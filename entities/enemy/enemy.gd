@@ -1,5 +1,5 @@
 class_name Enemy extends Area2D
-@export var base_speed: float = 90.0 
+@export var base_speed: float = 300.0 
 @export var damage_amount: float = 100.0
 var is_chasing: bool = false
 var speed: float

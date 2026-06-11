@@ -19,10 +19,11 @@ var health = max_health
 @onready var detection_range := $MobDetection/CollisionShape2D
 @onready var detection_area = $MobDetection
 @export var attack_rate := 1.5
+var normal_attack_rate = attack_rate
 @onready var timer = $Timer
 @export var projectile_scene: PackedScene
 @onready var spawn_point = $Marker2D
-
+var is_powerup_acitve := false
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _ready() -> void:
 	detection_range.shape = detection_range.shape.duplicate()
@@ -71,12 +72,20 @@ func acid_shot():
 	get_tree().current_scene.add_child(projectile)
 
 	projectile.global_transform = spawn_point.global_transform
-	
-	cooldown.start()
+	if is_powerup_acitve:
+		cooldown.start(0.05)
+	else:
+		cooldown.start(0.4)
 
 #---Timer Node Function--------------------------------------------------------------------------------------------
 func _on_timer_timeout() -> void:
 	max_speed = normal_speed
+	
+	#if attack_rate > normal_attack_rate:
+		#attack_rate = normal_attack_rate
+		#timer.wait_time = 1.0 / attack_rate
+		#timer.start()
+	
 
 #---Health Function------------------------------------------------------------------------------------------------
 func set_health(new_health: int) -> void:
@@ -99,8 +108,14 @@ func set_health_count(new_health_count: int) -> void:
 		#set_health(health + 10)
 		
 		
-
-
+func activate_lightning_boost() -> void:
+	print("speed boost activated!")
+	is_powerup_acitve = true
+	max_speed = normal_speed * 1.5
+	await get_tree().create_timer(5.0).timeout
+	print("speed boost done")
+	is_powerup_acitve = false
+	max_speed = normal_speed
 
 #---Damage Function------------------------------------------------------------------------------------------------
 func _take_damage(amount: float) -> void:
@@ -124,8 +139,9 @@ func _take_damage(amount: float) -> void:
 #---Area Entered Function------------------------------------------------------------------------------------------
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
 	print("In area")
-	#if area.is_in_group("speed_boost"):
-		#set_health_count(health_count + 1)
+	if area.is_in_group("speed_boost"):
+		activate_lightning_boost()
+		area.queue_free()
 	if area.is_in_group("healing_item"):
 		print("In heal")
 		if health_count < 4:
