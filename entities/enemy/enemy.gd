@@ -1,8 +1,8 @@
 class_name Enemy extends Area2D
-@export var chase_speed: float = 120.0 
+@export var base_speed: float = 90.0 
 @export var damage_amount: float = 10.0
 var is_chasing: bool = false
-
+var speed: float
 ###-Health Variables-------------------------------------------------------------------------
 @export var max_health := 100.0
 @export var health = max_health
@@ -16,6 +16,7 @@ func set_health(new_health: int) -> void:
 
 #---On Ready Function------------------------------------------------------------------------
 func _on_ready() -> void:
+	
 	health = max_health
 	if health_bar:
 		

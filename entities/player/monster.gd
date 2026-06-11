@@ -12,6 +12,7 @@ var health_count := 0
 var health = max_health
 @onready var health_bar = $HitBoxArea/UI/HealthBar
 @onready var ui_node = $HitBoxArea/UI
+@onready var healthCount = $HitBoxArea/UI/HealthCount
 
 ###-Mob Detection and Projectiles----------------------------------------------------------------------------------
 @export var enemy_detection_range:= 1000.0
@@ -80,7 +81,7 @@ func _on_timer_timeout() -> void:
 #---Health Function------------------------------------------------------------------------------------------------
 func set_health(new_health: int) -> void:
 	health = new_health
-	get_node("UI/HealthBar").value = health
+	get_node("HitBoxArea/UI/HealthBar").value = health
 
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _on_ready() -> void:
@@ -88,7 +89,7 @@ func _on_ready() -> void:
 
 func set_health_count(new_health_count: int) -> void:
 	health_count = new_health_count
-	get_node("$UI/Healthcount").text = "x" + str(health_count)
+	healthCount.text = "x" + str(health_count)
 
 
 #func _on_area_entered(area: Node2D) -> void:
@@ -117,10 +118,11 @@ func _take_damage(amount: float) -> void:
 
 #---Area Entered Function------------------------------------------------------------------------------------------
 func _on_hit_box_area_area_entered(area: Area2D) -> void:
-	print("area")
+	print("In area")
 	#if area.is_in_group("speed_boost"):
 		#set_health_count(health_count + 1)
 	if area.is_in_group("healing_item"):
+		print("In heal")
 		set_health_count(health_count + 1)
 		set_health(health + 10)
 

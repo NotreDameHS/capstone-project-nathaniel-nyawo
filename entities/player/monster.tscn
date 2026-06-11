@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dycphwr4neun2" path="res://entities/player/monster.gd" id="1_74f06"]
 [ext_resource type="PackedScene" uid="uid://drtil7i38nckh" path="res://entities/attacks/acid_ball.tscn" id="2_0nvmt"]
 [ext_resource type="Texture2D" uid="uid://e72sta8e0kit" path="res://entities/player/monsterer.png" id="2_ggaaf"]
+[ext_resource type="Texture2D" uid="uid://dcuylfo76gb7e" path="res://entities/collectibles/Heart buff/pngtree-red-pixelated-heart-icon-in-8-bit-style-on-transparent-background-png-image_18231914.webp" id="4_m60tw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ggaaf"]
 radius = 60.0
@@ -41,6 +42,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_ggaaf")
 
 [node name="HitBoxArea" type="Area2D" parent="." unique_id=1113182558]
+collision_mask = 5
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBoxArea" unique_id=1580624310]
 shape = SubResource("CapsuleShape2D_ggaaf")
@@ -69,6 +71,20 @@ offset_left = 2.0
 offset_top = -50.0
 offset_right = 43.0
 offset_bottom = -27.0
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBoxArea/UI" unique_id=268416439]
+position = Vector2(-50, -221)
+scale = Vector2(0.176, 0.176)
+texture = ExtResource("4_m60tw")
+
+[node name="HealthCount" type="Label" parent="HitBoxArea/UI" unique_id=446928174]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -234.0
+offset_right = 42.0
+offset_bottom = -192.0
+theme_override_font_sizes/font_size = 35
+text = "x0"
 
 [node name="MobDetection" type="Area2D" parent="." unique_id=539937884]
 collision_layer = 0
