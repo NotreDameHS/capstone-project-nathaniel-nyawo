@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var pause_btn: Button = $TopMargin/HBoxContainer/PauseBtn
 @onready var score: Label = $TopMargin/HBoxContainer/ScorePanel/ScoreLabel
+@onready var score_label: Label = $TopMargin/HBoxContainer/Label
 
 
 #---Ready Function---------------------------------------------------------------------------

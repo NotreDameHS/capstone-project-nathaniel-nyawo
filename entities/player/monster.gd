@@ -8,7 +8,7 @@ var steering_factor := 10.0
 var health_count := 0
 @onready var cooldown: Timer = $CoolDown
 
-@export var max_health := 250
+@export var max_health := 100.0
 var health = max_health
 @onready var health_bar = $HitBoxArea/UI/HealthBar
 @onready var ui_node = $HitBoxArea/UI
@@ -27,6 +27,8 @@ var is_powerup_acitve := false
 
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _ready() -> void:
+	health_bar.max_value = max_health
+	
 	detection_range.shape = detection_range.shape.duplicate()
 	detection_range.shape.radius = enemy_detection_range
 	
@@ -135,6 +137,7 @@ func _take_damage(amount: float) -> void:
 				health = 0.0
 				GameManager.show_end_screen("Game Over!")
 		if health_bar:
+			print(health)
 			health_bar.value = health
 	else:
 		return

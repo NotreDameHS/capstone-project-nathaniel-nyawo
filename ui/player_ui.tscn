@@ -22,6 +22,11 @@ theme_override_constants/margin_bottom = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="TopMargin" unique_id=574840004]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="TopMargin/HBoxContainer" unique_id=115757102]
+layout_mode = 2
+text = "SCORE:"
+label_settings = ExtResource("1_cfom6")
+
 [node name="ScorePanel" type="Panel" parent="TopMargin/HBoxContainer" unique_id=2129823041]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
@@ -31,7 +36,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vq5xy")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "SCORE"
+text = "0"
 label_settings = ExtResource("1_cfom6")
 horizontal_alignment = 1
 vertical_alignment = 1
