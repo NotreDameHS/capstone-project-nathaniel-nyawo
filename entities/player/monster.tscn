@@ -96,6 +96,10 @@ shape = SubResource("CircleShape2D_ggaaf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2021221320]
 zoom = Vector2(0.5, 0.5)
+limit_left = -2168
+limit_top = -2168
+limit_right = 2168
+limit_bottom = 2168
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1217002726]
 position = Vector2(60, 0)

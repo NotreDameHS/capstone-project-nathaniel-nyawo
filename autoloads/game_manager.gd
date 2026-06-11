@@ -14,6 +14,7 @@ signal wave_changed(new_wave: int)
 
 var score: int = 0
 var current_wave: int = 1
+
 func add_score(amount: int) -> void:
 	score += amount
 	score_changed.emit(score)
@@ -33,7 +34,7 @@ func trigger_game_over() -> void:
 	get_tree().reload_current_scene()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	score_changed.emit(score)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

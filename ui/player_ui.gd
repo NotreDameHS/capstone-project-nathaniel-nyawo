@@ -1,11 +1,17 @@
 extends CanvasLayer
 
 @onready var pause_btn: Button = $TopMargin/HBoxContainer/PauseBtn
+@onready var score: Label = $TopMargin/HBoxContainer/ScorePanel/ScoreLabel
+
 
 #---Ready Function---------------------------------------------------------------------------
 func _ready() -> void:
 	pause_btn.pressed.connect(_on_pause_pressed)
+	GameManager.score_changed.connect(_on_score_changed)
 
+func _on_score_changed(amount: float) -> void:
+	score.text = str(int(amount))
+	
 #---Pause Function---------------------------------------------------------------------------
 func _on_pause_pressed() -> void:
 	var is_paused = get_tree().paused

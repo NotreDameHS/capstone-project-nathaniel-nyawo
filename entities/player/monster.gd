@@ -24,6 +24,7 @@ var normal_attack_rate = attack_rate
 @export var projectile_scene: PackedScene
 @onready var spawn_point = $Marker2D
 var is_powerup_acitve := false
+
 #---Ready Function-------------------------------------------------------------------------------------------------
 func _ready() -> void:
 	detection_range.shape = detection_range.shape.duplicate()
@@ -39,6 +40,9 @@ func _physics_process(_delta) -> void:
 	if not enemy_in_range.is_empty():
 		var target: Node2D = enemy_in_range[0]
 		look_at(target.global_position)
+	
+	global_position.x = clamp(global_position.x, -2168, 2168)
+	global_position.y = clamp(global_position.y, -2168, 2168)
 
 #---Movement Function----------------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
@@ -120,7 +124,7 @@ func activate_lightning_boost() -> void:
 #---Damage Function------------------------------------------------------------------------------------------------
 func _take_damage(amount: float) -> void:
 	if cooldown.is_stopped():
-		print("You're taking", amount, " damage!")
+		print("You're taking ", amount, " damage!")
 		health -= amount
 		if health <= 0.0:
 			if health_count > 0:
