@@ -1,3 +1,4 @@
+ # Developed by Natheniel
 class_name Monster extends Node2D
 
 #---Main Variables-------------------------------------------------------------------------------------------------

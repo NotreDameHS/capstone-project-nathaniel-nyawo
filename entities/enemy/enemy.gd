@@ -1,3 +1,5 @@
+ # Developed by Daniel.
+#edited also by natheniel
 class_name Enemy extends Area2D
 @export var base_speed: float = 350.0 
 @export var damage_amount: float = 25.0

@@ -1,3 +1,5 @@
+ # Developed by Daniel
+#edited by Natheniel
 extends Node
 ###-Game over / Victory----------------------------------------------------------------------
 const GAME_END_SCREEN = preload("res://ui/game_end_screen.tscn")

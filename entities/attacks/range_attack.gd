@@ -1,3 +1,4 @@
+ # Developed by Natheniel
 class_name Projectile extends Area2D
 
 @export var damage := 25.0

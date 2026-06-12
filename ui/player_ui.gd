@@ -1,3 +1,4 @@
+#Developed By Natheniel
 extends CanvasLayer
 
 @onready var pause_btn: Button = $TopMargin/HBoxContainer/PauseBtn

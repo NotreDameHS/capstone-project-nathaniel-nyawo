@@ -1,3 +1,4 @@
+ # Developed by Daniel
 extends Node2D
 
 var item_scenes := [
