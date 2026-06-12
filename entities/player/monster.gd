@@ -87,10 +87,7 @@ func acid_shot():
 func _on_timer_timeout() -> void:
 	max_speed = normal_speed
 	
-	#if attack_rate > normal_attack_rate:
-		#attack_rate = normal_attack_rate
-		#timer.wait_time = 1.0 / attack_rate
-		#timer.start()
+	
 	
 
 #---Health Function------------------------------------------------------------------------------------------------
@@ -107,11 +104,7 @@ func set_health_count(new_health_count: int) -> void:
 	healthCount.text = "x" + str(health_count)
 
 
-#func _on_area_entered(area: Node2D) -> void:
-	#if area.is_in_group("health"):
-		#set_health_count(health_count + 1)
-	#elif area.is_in_group("healing_item"):
-		#set_health(health + 10)
+
 		
 		
 func activate_lightning_boost() -> void:

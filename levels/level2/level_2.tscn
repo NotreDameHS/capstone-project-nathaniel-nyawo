@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cibecmjqxr4q5" path="res://levels/level1/level_1.gd" id="1_dm7n7"]
 [ext_resource type="PackedScene" uid="uid://b2phgbcx1d0fd" path="res://entities/player/monster.tscn" id="1_qqytr"]
 [ext_resource type="PackedScene" uid="uid://2oqfqxx5b61g" path="res://entities/enemy/enemy.tscn" id="2_d3n5x"]
-[ext_resource type="PackedScene" uid="uid://cjpuaf2fnrif6" path="res://random_item.tscn" id="5_45oce"]
+[ext_resource type="PackedScene" uid="uid://cjpuaf2fnrif6" path="res://Random_item_generator/random_item.tscn" id="5_45oce"]
 [ext_resource type="PackedScene" uid="uid://cd1rnjp6gf8wp" path="res://ui/player_ui.tscn" id="6_noby5"]
 
 [sub_resource type="Curve2D" id="Curve2D_dm7n7"]
