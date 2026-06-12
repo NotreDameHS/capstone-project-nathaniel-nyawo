@@ -1,6 +1,6 @@
 extends Node2D
 @export var enemy_scene: PackedScene
-@export var max_enemies : int = 5
+@export var max_enemies : int = 8
 @onready var spawn_timer: Timer = $enemyspawntimer
 var total_spawned_this_wave: int = 0
 # Called when the node enters the scene tree for the first time.

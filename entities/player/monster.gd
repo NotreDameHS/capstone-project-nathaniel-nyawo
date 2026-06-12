@@ -135,7 +135,7 @@ func _take_damage(amount: float) -> void:
 				print("lost a life! Remaining Lives: ", health_count)
 			else:
 				health = 0.0
-				GameManager.show_end_screen("Game Over!")
+				GameManager.show_end_screen("Game Over!\nFinal Score: " + str(GameManager.score))
 		if health_bar:
 			print(health)
 			health_bar.value = health
